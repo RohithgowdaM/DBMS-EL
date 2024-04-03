@@ -92,13 +92,16 @@ o	User/Settings<br>
 o	Messaging<br>
 
 **DFD LEVEL-0**
+
 ![image_1.png](DFD_level_0.png)
-<br>
+
 Fig 2: DFD level-0 <br><br>
 
 
 **DFD LEVEL-1**
+
 ![image_1.png](DFD_level_1.jpeg)
+
 Fig 2: DFD level 1 <br><br>
 
 # Chapter 4 - Result and Discussion<br>
