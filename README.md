@@ -124,3 +124,7 @@ o	Company using this software will always be able to plan in future and always b
 o	It leads to ease in functioning of business processes.<br>
 o	The project can be made more robust by including biometric verification.<br>
 o	There is also a scope to expand by implementing newer technologies like cloud etcetera. <br>
+
+# Tags
+#dbms #nosql #mongodb #sql #mysql-workbench #java
+
