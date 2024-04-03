@@ -1,20 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package main;
 
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Hemaa
- */
 public class Retrieval_Drug extends javax.swing.JFrame {
-
+	Connection con = null;
+	PreparedStatement pre = null;
+	ResultSet res= null;
+	    
     public Retrieval_Drug() {
         initComponents();
+        con=Connect.connect();
     }
 
     /**
@@ -195,22 +194,56 @@ public class Retrieval_Drug extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   if(barcode.getText().equals("") || drug_name.getText().equals("")){
-       JOptionPane.showMessageDialog(null, "Complete Your Information" , "Missing Information" , 2);
-   }else {
-       
-   }
+        String barcodeText = barcode.getText().trim();
+        String drugNameText = drug_name.getText().trim();
+
+        if (barcodeText.isEmpty() && drugNameText.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter either a barcode or a drug name.", "Missing Information", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Construct SQL query
+        String sql = "";
+        if (!barcodeText.isEmpty()) {
+            sql = "SELECT SELLING_PRICE FROM drugs WHERE BARCODE = ?";
+        } else if (!drugNameText.isEmpty()) {
+            sql = "SELECT SELLING_PRICE FROM drugs WHERE NAME = ?";
+        }
+
+        try {
+            pre = con.prepareStatement(sql);
+            // Set the value to the prepared statement based on what is provided
+            if (!barcodeText.isEmpty()) {
+                pre.setString(1, barcodeText);
+            } else if (!drugNameText.isEmpty()) {
+                pre.setString(1, drugNameText);
+            }
+
+            res = pre.executeQuery();
+            if (res.next()) {
+            	 String sellingPriceText = String.format("%.2f", res.getDouble("SELLING_PRICE"));
+            	 price.setText(sellingPriceText);
+            } else {
+                JOptionPane.showMessageDialog(null, "Drug not found in the database.", "Not Found", JOptionPane.ERROR_MESSAGE);
+                price.setText("0.00");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error while retrieving drug price: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            try {
+                if (res != null) res.close();
+                if (pre != null) pre.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

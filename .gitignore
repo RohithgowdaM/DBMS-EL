@@ -2,3 +2,5 @@
 .settings/ 
 .bin/ 
 bin/ 
+srs/connect/
+pharmacyV1.jar

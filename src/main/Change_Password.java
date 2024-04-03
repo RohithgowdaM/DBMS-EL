@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package main;
 
 import java.awt.Color;
@@ -11,10 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Hemaa
- */
 public class Change_Password extends javax.swing.JFrame {
 Connection con = null;
 PreparedStatement pre = null;

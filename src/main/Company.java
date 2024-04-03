@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package main;
 
 import java.sql.Connection;
@@ -11,10 +6,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
-/**
- *
- * @author Hemaa
- */
+
 public class Company extends javax.swing.JFrame {
 Connection con = null;
 PreparedStatement pre= null;
@@ -92,13 +84,13 @@ ResultSet res = null;
         jScrollPane1.setViewportView(address);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setText("Compnay_Address : ");
+        jLabel3.setText("Company_Address : ");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setText("Compnay_Phone : ");
+        jLabel4.setText("Company_Phone : ");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setText("Compnay_Name : ");
+        jLabel2.setText("Company_Name : ");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

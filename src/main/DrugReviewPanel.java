@@ -74,7 +74,7 @@ public class DrugReviewPanel extends javax.swing.JFrame {
             String[][] data = new String[reviews.size()][1];
             for (int i = 0; i < reviews.size(); i++) {
                 String reviewType = sentimentAnalyzer.analyzeSentiment(reviews.get(i));
-                data[i][0] = reviewType + ": " + reviews.get(i);
+                data[i][0] = reviewType + " feedback ->  " + reviews.get(i);
             }
             drug_review1.setModel(new javax.swing.table.DefaultTableModel(
                     data,

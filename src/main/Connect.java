@@ -9,8 +9,8 @@ public class Connect {
 	
 	static String databaseName="pharmacy";
 	static String url="jdbc:mysql://localhost:3306/"+databaseName;
-	static String username="root";
-	static String password = "Rohith";
+	static String username="";//username
+	static String password = "";//Password
 	
   @SuppressWarnings("deprecation")
 public static Connection connect(){

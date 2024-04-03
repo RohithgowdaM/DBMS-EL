@@ -13,10 +13,6 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author Hemaa
- */
 public class Login extends javax.swing.JFrame {
 Connection con = null;
 PreparedStatement pre= null;
